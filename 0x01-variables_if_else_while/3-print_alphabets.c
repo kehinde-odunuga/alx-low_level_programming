@@ -1,11 +1,11 @@
 #include <stdio.h>
 
- /**
-  * main - Program entry point
-  * Description: Prints the letters of the alphabet in lowercase first
-  * followed by uppercase letters
-  * Return: 0
-  */
+/**
+ * main - Program entry point
+ * Description: Prints the letters of the alphabet in lowercase first
+ * followed by uppercase letters
+ * Return: 0
+ */
 int main(void)
 {
 	char x = 'a';
