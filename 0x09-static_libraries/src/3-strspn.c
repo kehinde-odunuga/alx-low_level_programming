@@ -1,34 +1,37 @@
 #include "main.h"
-
 /**
- * _strspn - Gets the length of prefix of s with characters from accept
- * @s: String to search
- * @accept: String of characters to accept
- *
- * Return: Number of accepted characters at beginning of s
+ * _strspn - gets the length of a prefix substring
+ * @s:This the main C string to bw scanned
+ * @accept:This is the string containing thet list of characters to match in s
+ * Return: number of bytes in the initial segment of s
  */
 unsigned int _strspn(char *s, char *accept)
+
 {
-	unsigned int i, j;
+int i, j;
+int count = 0;
+char *str1, *str2;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		char accepted = 0;
-
-		for (j = 0; accept[j] != '\0'; j++)
-		{
-			if (s[i] == accept[j])
-			{
-				accepted = 1;
-				break;
-			}
-		}
-
-		if (!accepted)
-		{
-			break;
-		}
-	}
-
-	return (i);
+str1 = s;
+str2 = accept;
+i = 0;
+while (str1[i] != '\0') /*Declaring WHILE *s */
+{
+j = 0;
+while (str2[j] != '\0') /*Declaring WHILE *accept*/
+{
+if (str2[j] == str1[i]) /*Evaluate condition*/
+{
+count++; /*count number*/
+break;
+}
+j++;    /*add j+1*/
+}
+if (s[i] != accept[j]) /*If aren't equals*/
+{
+break;
+}
+i++; /*add x+1*/
+}
+return (count); /*return the value of count*/
 }
