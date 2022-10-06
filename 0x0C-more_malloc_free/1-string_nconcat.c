@@ -1,62 +1,45 @@
 #include "main.h"
 #include <stdlib.h>
-
+#include <string.h>
 /**
- * _strlen - Find the number of characters in a null-terminated string
- * @s: String whose characters to count
- *
- * Return: The number of characters in s. 0 if s is NULL
- */
-int _strlen(char *s)
-{
-	int length = 0;
-
-	if (s == NULL)
-	{
-		return (0);
-	}
-	while (s[length] != '\0')
-	{
-		length++;
-	}
-
-	return (length);
-}
-
-/**
- * string_nconcat - Concatenate two strings
- * @s1: Starting string
- * @s2: Ending string
- * @n: Number of chars in s2 to concatenate
- *
- * Return: The concatenated string
+ * string_nconcat - concatinates two strings
+ * @s1: a pointer to the first string
+ * @s2: a pointer to the seconf string
+ * @n: the number of s2 characters to be concarinated
+ * Return: a ponter to the newly allocated space in the memory
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int i;
-	unsigned int size, size1, size2;
-	char *result;
-
-	size1 = _strlen(s1);
-	size2 = _strlen(s2);
-	size2 = (size2 > n) ? n : size2;
-	size = size1 + size2;
-
-	result = malloc(size + 1);
-	if (result == NULL)
-	{
-		return (NULL);
-	}
-
-	for (i = 0; i < size1; i++)
-	{
-		result[i] = s1[i];
-	}
-	for (i = 0; i < size2; i++)
-	{
-		result[i + size1] = s2[i];
-	}
-	result[size] = '\0';
-
-	return (result);
+unsigned int i, j, w;
+char *ar;
+if (s1 == NULL)
+{
+s1 = "";
+}
+if (s2 == NULL)
+{
+s2 = "";
+}
+i = strlen(s1);
+w = strlen(s2);
+if (n > w)
+{
+n = w;
+}
+ar = malloc((sizeof(char) * (i + n)) +1);
+if (ar == NULL)
+{
+return (NULL);
+}
+for (j = 0; j < (i + n); j++)
+{
+if (j < i)
+{
+ar[j] = s1[j];
+}
+else
+ar[j] = s2[j - i];
+}
+ar[j] = '\0';
+return (ar);
 }
